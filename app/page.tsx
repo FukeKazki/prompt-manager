@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="grid gap-6">
       <div className="grid gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Prompts</h2>
           <Link href="/new-prompt">
             <Button size="sm" variant="outline" className="ml-auto">

@@ -11,10 +11,9 @@ import {
 import { TagIcon } from "../icons/tag-icon";
 import { Button } from "../ui/button";
 import { CopyIcon } from "../icons/copy-icon";
-import { FilePenIcon } from "../icons/file-pen-icon";
-import { Badge } from "../ui/badge";
 import { Prompt } from "@/schema/prompt";
 import { ComponentProps } from "react";
+import { useToast } from "../ui/use-toast";
 
 type Props = Prompt & ComponentProps<typeof Card>;
 
@@ -23,10 +22,16 @@ export function PromptCard({
   description,
   text,
   tags,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  isPublic,
   ...props
 }: Props) {
+  const { toast } = useToast();
   const handleCopy = () => {
     navigator.clipboard.writeText(text).catch(console.error);
+    toast({
+      title: "クリップボードにコピーしました",
+    });
   };
   return (
     <Card {...props}>
@@ -36,30 +41,26 @@ export function PromptCard({
       </CardHeader>
       <CardContent>
         <div className="grid gap-2">
-          <div className="flex items-center gap-2">
-            <Badge variant="outline">Public</Badge>
-            <div className="flex-1" />
-            <div className="flex items-center gap-2">
-              <TagIcon className="h-4 w-4" />
-              {tags.map((tag) => (
-                <span className="text-sm" key={tag.title}>
-                  {tag.title}
-                </span>
-              ))}
-            </div>
-          </div>
-          <p className="whitespace-pre-wrap">{text}</p>
+          {/* <Badge variant="outline">Public</Badge> */}
+          <p className="whitespace-pre-wrap p-4 bg-accent">{text}</p>
         </div>
       </CardContent>
-      <CardFooter className="flex items-center gap-2">
+      <CardFooter className="grid gap-2">
         <Button size="icon" variant="ghost" onClick={handleCopy}>
           <CopyIcon className="h-4 w-4" />
           <span className="sr-only">Copy Prompt</span>
         </Button>
-        <Button size="icon" variant="ghost">
-          <FilePenIcon className="h-4 w-4" />
-          <span className="sr-only">Edit Prompt</span>
-        </Button>
+        <div className="flex items-center gap-2">
+          {tags.map((tag) => (
+            <span
+              className="text-sm inline-flex items-center gap-1"
+              key={tag.title}
+            >
+              <TagIcon className="h-4 w-4" />
+              {tag.title}
+            </span>
+          ))}
+        </div>
       </CardFooter>
     </Card>
   );

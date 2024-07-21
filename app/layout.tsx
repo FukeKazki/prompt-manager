@@ -4,6 +4,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Header } from "@/components/shared/header.component";
 import { Sidebar } from "@/components/shared/sidebar.component";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
             <main className="flex-1 overflow-y-auto p-4 sm:p-6">
               {children}
             </main>
+            <Toaster />
           </div>
         </div>
       </body>
