@@ -42,7 +42,7 @@ export function PromptCard({
       <CardContent>
         <div className="grid gap-2">
           {/* <Badge variant="outline">Public</Badge> */}
-          <p className="whitespace-pre-wrap p-4 bg-accent">{text}</p>
+          <p className="whitespace-pre-wrap bg-accent p-4">{text}</p>
         </div>
       </CardContent>
       <CardFooter className="grid gap-2">
@@ -54,7 +54,7 @@ export function PromptCard({
           {tags.map((tag) => (
             <Link href={`/prompt/${tag}`} key={tag}>
               <span
-                className="text-sm inline-flex items-center gap-1"
+                className="inline-flex items-center gap-1 text-sm"
                 key={tag}
               >
                 <TagIcon className="h-4 w-4" />

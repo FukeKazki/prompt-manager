@@ -85,7 +85,7 @@ export function NewPromptForm({ tags }: Props) {
               submitRef?.current?.click();
             }}
           >
-            <PlusIcon className="h-4 w-4 mr-2" />
+            <PlusIcon className="mr-2 h-4 w-4" />
             Save Prompt
           </Button>
         </div>
@@ -174,7 +174,7 @@ export function NewPromptForm({ tags }: Props) {
                                   }
                                 }}
                               >
-                                <TagIcon className="w-4 h-4" />
+                                <TagIcon className="h-4 w-4" />
                                 {tag.title}
                               </Toggle>
                             </FormControl>

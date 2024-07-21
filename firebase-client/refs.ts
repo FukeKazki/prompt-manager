@@ -1,4 +1,4 @@
-import { collection, CollectionReference, setDoc } from "firebase/firestore";
+import { collection, CollectionReference } from "firebase/firestore";
 import { firestore } from "./app";
 import { Tag } from "@/schema/tag";
 import { Prompt } from "@/schema/prompt";
