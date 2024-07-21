@@ -19,15 +19,13 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body className={inter.className}>
-        <div className="flex h-screen w-full flex-col bg-background">
+        <div className="bg-background">
           <Header />
-          <div className="flex flex-1 overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-[256px_1fr]">
             <Sidebar />
-            <main className="flex-1 overflow-y-auto p-4 sm:p-6">
-              {children}
-            </main>
+            <main className="overflow-y-auto p-4">{children}</main>
             <Toaster />
           </div>
         </div>

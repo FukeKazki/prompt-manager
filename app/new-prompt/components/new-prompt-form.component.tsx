@@ -17,7 +17,6 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { Switch } from "@/components/ui/switch";
 import { Toggle } from "@/components/ui/toggle";
 import { useRef } from "react";
 import { Tag } from "@/schema/tag";
@@ -152,25 +151,6 @@ export function NewPromptForm({ tags }: Props) {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="isPublic"
-                  render={({ field }) => (
-                    <FormItem className="flex gap-2 items-center">
-                      <FormLabel>Public</FormLabel>
-                      <FormControl>
-                        <Switch
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                          style={{
-                            marginTop: 0,
-                          }}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-
                 <ul className="flex gap-4">
                   {tags.map((tag, index) => (
                     <li key={index}>
