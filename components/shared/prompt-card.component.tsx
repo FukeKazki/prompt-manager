@@ -14,6 +14,7 @@ import { CopyIcon } from "../icons/copy-icon";
 import { Prompt } from "@/schema/prompt";
 import { ComponentProps } from "react";
 import { useToast } from "../ui/use-toast";
+import Link from "next/link";
 
 type Props = Prompt & ComponentProps<typeof Card>;
 
@@ -24,7 +25,6 @@ export function PromptCard({
   tags,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isPublic,
-  ...props
 }: Props) {
   const { toast } = useToast();
   const handleCopy = () => {
@@ -34,7 +34,7 @@ export function PromptCard({
     });
   };
   return (
-    <Card {...props}>
+    <Card>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
@@ -52,13 +52,15 @@ export function PromptCard({
         </Button>
         <div className="flex items-center gap-2">
           {tags.map((tag) => (
-            <span
-              className="text-sm inline-flex items-center gap-1"
-              key={tag.title}
-            >
-              <TagIcon className="h-4 w-4" />
-              {tag.title}
-            </span>
+            <Link href={`/prompt/${tag}`} key={tag}>
+              <span
+                className="text-sm inline-flex items-center gap-1"
+                key={tag}
+              >
+                <TagIcon className="h-4 w-4" />
+                {tag}
+              </span>
+            </Link>
           ))}
         </div>
       </CardFooter>
