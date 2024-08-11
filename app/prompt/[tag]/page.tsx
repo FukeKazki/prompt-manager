@@ -3,6 +3,7 @@ import { PlusIcon } from "@/components/icons/plus-icon";
 import { PromptCard } from "@/components/shared/prompt-card.component";
 import Link from "next/link";
 import { getPromptsByTagAction } from "../../action";
+import { notFound } from "next/navigation";
 
 export default async function PromptPage({
   params,
@@ -10,6 +11,11 @@ export default async function PromptPage({
   params: { tag: string };
 }) {
   const prompts = await getPromptsByTagAction(params.tag);
+
+  if (!prompts.length) {
+    notFound();
+  }
+
   return (
     <div className="grid gap-6">
       <div className="grid gap-2">
