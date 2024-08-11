@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Prompt, PromptSchema } from "@/schema/prompt";
+import { PromptSchema } from "@/schema/prompt";
 import {
   Form,
   FormControl,
@@ -22,20 +22,19 @@ import { useRef } from "react";
 import { Tag } from "@/schema/tag";
 import { createPromptAction } from "@/app/action";
 import { useToast } from "@/components/ui/use-toast";
-import { Base } from "@/schema/base";
 import { useRouter } from "next/navigation";
+import z from "zod";
 
 type Props = {
   tags: Tag[];
 };
-
-type PromptForm = Omit<Prompt, keyof Base>;
 
 const PromptFormSchema = PromptSchema.omit({
   id: true,
   createdAt: true,
   updatedAt: true,
 });
+type PromptForm = z.infer<typeof PromptFormSchema>;
 
 export function NewPromptForm({ tags }: Props) {
   const router = useRouter();

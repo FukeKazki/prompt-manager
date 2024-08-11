@@ -7,7 +7,7 @@ import Link from "next/link";
 export async function Sidebar() {
   const tags = await getTagsAction();
   return (
-    <aside className="hidden w-64 flex-col border-r bg-muted/40 p-4 sm:flex">
+    <aside className="hidden flex-col border-r bg-muted/40 p-4 sm:flex">
       <div className="flex items-center gap-2 border-b pb-4">
         <TagIcon className="h-5 w-5" />
         <h3 className="text-lg font-medium">Tags</h3>
